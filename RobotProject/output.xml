@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.3 on win32)" generated="2025-12-14T13:59:48.545151" rpa="false" schemaversion="5">
+<suite id="s1" name="RobotProject" source="C:\Users\nandh\PycharmProjects\RobotProject">
+<suite id="s1-s1" name="Saucedemo" source="C:\Users\nandh\PycharmProjects\RobotProject\saucedemo">
+<suite id="s1-s1-s1" name="Saucedemo" source="C:\Users\nandh\PycharmProjects\RobotProject\saucedemo\saucedemo.robot">
+<kw name="Open Browser To Login Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-12-14T13:59:48.979690" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-12-14T13:59:48.979150" elapsed="2.304506"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-12-14T13:59:51.284113" elapsed="0.031400"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-12-14T13:59:51.315838" elapsed="0.056360"/>
+</kw>
+<status status="PASS" start="2025-12-14T13:59:48.977706" elapsed="2.394818"/>
+</kw>
+<test id="s1-s1-s1-t1" name="filter_1" line="85">
+<kw name="Login As Standard User">
+<kw name="Login With Credentials">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-12-14T13:59:51.377152" level="INFO">Typing text 'standard_user' into text field '//*[@id="user-name"]'.</msg>
+<arg>${USERNAME_INPUT}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-14T13:59:51.375198" elapsed="0.244442"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-12-14T13:59:51.620404" level="INFO">Typing text 'secret_sauce' into text field '//*[@id="password"]'.</msg>
+<arg>${PASSWORD_INPUT}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-14T13:59:51.619950" elapsed="0.207420"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-12-14T13:59:51.829135" level="INFO">Clicking button '//*[@id="login-button"]'.</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-14T13:59:51.827982" elapsed="0.261986"/>
+</kw>
+<arg>${VALID_USER}</arg>
+<arg>${VALID_PASS}</arg>
+<status status="PASS" start="2025-12-14T13:59:51.374730" elapsed="0.715651"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${INVENTORY_ITEM}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-12-14T13:59:52.090936" elapsed="0.028418"/>
+</kw>
+<status status="PASS" start="2025-12-14T13:59:51.374214" elapsed="0.745399"/>
+</kw>
+<kw name="Select From List By Value" owner="SeleniumLibrary">
+<msg time="2025-12-14T13:59:52.121410" level="INFO">Selecting options from selection list '//*[@id="header_container"]/div[2]/div/span/select' by value az.</msg>
+<arg>${PRODUCT_SORT}</arg>
+<arg>az</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<status status="PASS" start="2025-12-14T13:59:52.120590" elapsed="0.108632"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-12-14T13:59:52.246202" level="INFO">${names} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="250c43f00ea80c6d0bca7ef0813bc3c5", element="f.30AE6A32B2E29A9B310F1E163348868B.d.82C500E029986EC413594F687EC135D1.e.30")&gt;, &lt;selenium.webdriv...</msg>
+<var>${names}</var>
+<arg>css=.inventory_item_name</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-12-14T13:59:52.229936" elapsed="0.016325"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-12-14T13:59:52.263028" level="INFO">${first_name} = Sauce Labs Backpack</msg>
+<var>${first_name}</var>
+<arg>${names}[0]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-14T13:59:52.246700" elapsed="0.016408"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-12-14T13:59:52.273572" level="INFO">${last_name} = Test.allTheThings() T-Shirt (Red)</msg>
+<var>${last_name}</var>
+<arg>${names}[-1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-14T13:59:52.263658" elapsed="0.009999"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>'${first_name}' &lt; '${last_name}'</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-12-14T13:59:52.274368" elapsed="0.000624"/>
+</kw>
+<status status="PASS" start="2025-12-14T13:59:51.372712" elapsed="0.902835"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-12-14T13:59:52.276674" elapsed="2.280820"/>
+</kw>
+<status status="PASS" start="2025-12-14T13:59:48.583778" elapsed="5.973857"/>
+</suite>
+<status status="PASS" start="2025-12-14T13:59:48.581201" elapsed="5.978049"/>
+</suite>
+<status status="PASS" start="2025-12-14T13:59:48.546818" elapsed="6.013919"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="RobotProject" id="s1" pass="1" fail="0" skip="0">RobotProject</stat>
+<stat name="Saucedemo" id="s1-s1" pass="1" fail="0" skip="0">RobotProject.Saucedemo</stat>
+<stat name="Saucedemo" id="s1-s1-s1" pass="1" fail="0" skip="0">RobotProject.Saucedemo.Saucedemo</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
